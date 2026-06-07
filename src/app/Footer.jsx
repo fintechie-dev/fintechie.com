@@ -1,19 +1,19 @@
 import React from "react";
-import { Zap, Linkedin, Twitter, Github } from "lucide-react";
+import { Zap, Linkedin, Github, Mail } from "lucide-react";
 
 export function Footer() {
   const cols = [
     {
-      heading: "Services",
-      links: ["Cloud Migration", "Cybersecurity", "Network Infrastructure", "Data Management", "Managed Support"],
+      heading: "Expertise",
+      links: ["Finance & Accounting", "Business Operations", "Software Development", "ERP & POS Systems"],
     },
     {
       heading: "Solutions",
-      links: ["Small Business", "Mid-Market", "Enterprise", "Healthcare IT", "Financial Services"],
+      links: ["POS System", "ERP Workflow", "E-Commerce Platform", "Payment Integration"],
     },
     {
-      heading: "Company",
-      links: ["About Us", "Careers", "Blog", "Press", "Partner Program"],
+      heading: "Connect",
+      links: ["About", "Expertise", "Solutions", "Contact"],
     },
   ];
 
@@ -21,7 +21,6 @@ export function Footer() {
     <footer className="bg-[#0e1420] border-t border-[rgba(45,125,255,0.18)] pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-[#2d7dff] flex items-center justify-center">
@@ -31,25 +30,28 @@ export function Footer() {
                 className="text-white"
                 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: "1.1rem" }}
               >
-                NexaTech
+                FinTechie
               </span>
             </div>
+
             <p
               className="text-[#7a8ba8] leading-relaxed mb-6"
               style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.85rem" }}
             >
-              Enterprise IT solutions designed to scale with your ambition. Trusted by 500+ organizations worldwide.
+              Bridging finance, business, and technology through ERP systems, POS solutions,
+              e-commerce platforms, and business automation.
             </p>
+
             <div className="flex gap-3">
-              {[Linkedin, Twitter, Github].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-xl border border-[rgba(45,125,255,0.2)] flex items-center justify-center text-[#7a8ba8] hover:text-white hover:border-[#2d7dff] transition-all"
-                >
-                  <Icon size={15} />
-                </a>
-              ))}
+              <a href="https://www.linkedin.com/in/fintechie" className="w-9 h-9 rounded-xl border border-[rgba(45,125,255,0.2)] flex items-center justify-center text-[#7a8ba8] hover:text-white hover:border-[#2d7dff] transition-all">
+                <Linkedin size={15} />
+              </a>
+              <a href="https://github.com/fintechie-dev" className="w-9 h-9 rounded-xl border border-[rgba(45,125,255,0.2)] flex items-center justify-center text-[#7a8ba8] hover:text-white hover:border-[#2d7dff] transition-all">
+                <Github size={15} />
+              </a>
+              <a href="mailto:fintechie.dev@gmail.com" className="w-9 h-9 rounded-xl border border-[rgba(45,125,255,0.2)] flex items-center justify-center text-[#7a8ba8] hover:text-white hover:border-[#2d7dff] transition-all">
+                <Mail size={15} />
+              </a>
             </div>
           </div>
 
@@ -61,11 +63,12 @@ export function Footer() {
               >
                 {col.heading}
               </p>
+
               <ul className="space-y-2.5">
                 {col.links.map((l) => (
                   <li key={l}>
                     <a
-                      href="#"
+                      href="#contact"
                       className="text-[#7a8ba8] hover:text-[#e8edf5] transition-colors"
                       style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.85rem" }}
                     >
@@ -83,13 +86,14 @@ export function Footer() {
             className="text-[#7a8ba8]"
             style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem" }}
           >
-            © 2026 NexaTech Inc. All rights reserved.
+            © 2026 FinTechie. All rights reserved.
           </p>
+
           <p
             className="text-[#2d7dff] opacity-50"
             style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.7rem" }}
           >
-            build_v4.2.1 · uptime: 99.97%
+            1143034345
           </p>
         </div>
       </div>
