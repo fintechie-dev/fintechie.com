@@ -9,24 +9,19 @@ export function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs
-        .sendForm(
-          "YOUR_SERVICE_ID",
-          "YOUR_TEMPLATE_ID",
-          form.current,
-          {
-            publicKey: "YOUR_PUBLIC_KEY",
-          }
-        )
-        .then(() => {
-          setSent(true);
-          form.current.reset();
-        })
-        .catch((error) => {
-          console.log("FAILED:", error.text);
-          alert("Message failed. Please try again.");
-        });
-    };
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      setSent(true);
+      setForm({ name: "", email: "", company: "", message: "" });
+
+    } catch (err) {
+      console.log("Error sending message", err);
+    }
   };
 
   return (
