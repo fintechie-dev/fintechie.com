@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Send, MapPin, Phone, Mail } from "lucide-react";
+
 import emailjs from "@emailjs/browser";
 
 export function Contact() {
@@ -10,17 +11,27 @@ export function Contact() {
     e.preventDefault();
 
     try {
-      await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      await emailjs.send(
+        "service_3hgmpsl",
+        "template_ph7h8bj",
+        {
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          message: form.message,
+        },
+        "ZrGVolBLO3XDcJKjw"
+      );
 
       setSent(true);
-      setForm({ name: "", email: "", company: "", message: "" });
-
-    } catch (err) {
-      console.log("Error sending message", err);
+      setForm({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
     }
   };
 
