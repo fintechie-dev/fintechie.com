@@ -22,8 +22,8 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[#2d7dff] flex items-center justify-center">
-            <Zap size={16} className="text-white" />
+          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
+            <img src="/image/favicon.png" />
           </div>
           <span
             className="text-white tracking-tight"

@@ -9,6 +9,7 @@ import { Testimonials } from "./app/Testimonials";
 import { Contact } from "./app/Contact";
 import { Footer } from "./app/Footer";
 import { Expertise } from "./app/Expertise";
+import { WhatsAppFloat } from "./app/ui/whatsappFloat";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
       {/* <Testimonials /> */}
       <Contact />
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 }
