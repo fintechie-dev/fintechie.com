@@ -1,4 +1,3 @@
-import React from "react";
 const stats = [
   { value: "8+", label: "Years in Finance & Business" },
   { value: "5+", label: "Technology Domains Explored" },

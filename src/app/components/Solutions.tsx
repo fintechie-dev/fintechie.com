@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 
@@ -49,9 +48,7 @@ const solutions = [
 
 export function Solutions() {
   const [active, setActive] = useState("pos");
-  const current = solutions.find((s) => s.id === active);
-
-  if (!current) return null;
+  const current = solutions.find((s) => s.id === active)!;
 
   return (
     <section id="solutions" className="bg-[#0e1420] py-24 border-y border-[rgba(45,125,255,0.18)]">
@@ -106,7 +103,7 @@ export function Solutions() {
             <ul className="space-y-3">
               {current.items.map((item) => (
                 <li key={item} className="flex items-center gap-3">
-                  <CheckCircle2 size={16} className="text-[#00c8ff] shrink-0" />
+                  <CheckCircle2 size={16} className="text-[#00c8ff] flex-shrink-0" />
                   <span
                     className="text-[#e8edf5]"
                     style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem" }}

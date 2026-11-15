@@ -1,4 +1,3 @@
-import React from "react";
 import { Users, Award, TrendingUp, Briefcase, Code, Database } from "lucide-react";
 
 export function About() {

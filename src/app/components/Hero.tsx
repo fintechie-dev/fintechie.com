@@ -1,7 +1,20 @@
-import React from "react";
-import { ArrowRight, Shield, Cpu, Globe } from "lucide-react";
+
+import type { CSSProperties } from "react";
+import { ArrowRight, Cpu } from "lucide-react";
+import { useTilt } from "../hooks/UseTilt";
 
 export function Hero() {
+
+  const entries: [string, string][] = [
+    ["Financial reporting", "React & Vite"],
+    ["Cost control", "Node.js & Express"],
+    ["Budgeting", "PostgreSQL, MySQL, MongoDB"],
+    ["Operations management", "ERP & billing systems"],
+    ["Process optimisation", "POS & payment integration"],
+  ];
+
+const stackRef = useTilt<HTMLDivElement>(12);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#080c14]">
       {/* Grid background */}
@@ -102,67 +115,114 @@ export function Hero() {
         </div>
 
         {/* Right — visual card stack */}
-        <div className="relative hidden md:block">
-          <div className="relative w-full aspect-square max-w-md ml-auto">
-            {/* Outer ring */}
-            <div
-              className="absolute inset-0 rounded-3xl border border-[rgba(45,125,255,0.2)] bg-[rgba(45,125,255,0.03)]"
-              style={{ animation: "spin 20s linear infinite" }}
-            />
-            {/* Center card */}
-            <div className="absolute inset-8 rounded-2xl bg-[#0e1420] border border-[rgba(45,125,255,0.25)] flex flex-col items-center justify-center gap-6 p-8">
-              <img
-                src="/image/TransparentLogo.png"
-                alt="Fintechie Logo"
-                className="w-32 h-32 object-contain"
-                style={{ animation: "spin 20s linear infinite"}}
-              />
-              <div className="text-center">
-                <p
-                  className="text-[#e8edf5] mb-1"
-                  style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: "1.4rem" }}
-                >
-                  Finance × Tech
-                </p>
-                <p
-                  className="text-[#7a8ba8]"
-                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem" }}
-                >
-                  Business Systems
-                </p>
-              </div>
-              <div className="w-full space-y-2">
-                {[
-                  "Finance Logic", 
-                  "Software Development", 
-                  "ERP & POS Systems"
-                ].map((item, i) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[rgba(45,125,255,0.06)] border border-[rgba(45,125,255,0.12)]"
-                  >
-                    <div
-                      className="w-1.5 h-1.5 rounded-full"
-                      style={{ background: i === 0 ? "#00c8ff" : i === 1 ? "#2d7dff" : "#4d9fff" }}
-                    />
-                    <span
-                      className="text-[#7a8ba8]"
-                      style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem" }}
-                    >
-                      {item}
-                    </span>
-                    <span
-                      className="ml-auto text-[#2d7dff]"
-                      style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem" }}
-                    >
-                      ✓ Active
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        {/* Right — 3D Finance & Tech Ledger */}
+<div className="relative hidden md:flex items-center justify-center">
+  <div className="ft-stage w-full max-w-md">
+
+    <div
+      ref={stackRef}
+      className="ft-stack relative"
+      style={{
+        transformStyle: "preserve-3d",
+        transition: "transform 0.15s ease-out",
+      }}
+    >
+      {/* Background sheets */}
+      <div
+        className="absolute inset-0 rounded-2xl border border-[#2d7dff]/20 bg-[#101c30]"
+        style={{ transform: "translateZ(-35px) translate(18px, 18px)" }}
+      />
+
+      <div
+        className="absolute inset-0 rounded-2xl border border-[#2d7dff]/30 bg-[#14233a]"
+        style={{ transform: "translateZ(-18px) translate(9px, 9px)" }}
+      />
+
+      {/* Main Ledger Card */}
+      <div
+        className="relative rounded-2xl overflow-hidden border border-[rgba(45,125,255,0.35)] bg-[#0e1420] shadow-[0_25px_80px_rgba(0,0,0,0.5)]"
+        style={{
+          transform: "translateZ(0)",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        {/* Card Header */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[#2d7dff]/20">
+          <span
+            className="text-[#e8edf5] font-bold tracking-widest text-sm"
+            style={{ fontFamily: "'Sora', sans-serif" }}
+          >
+            FINTECHIE
+          </span>
+
+          <span
+            className="text-[#00c8ff] text-[10px] tracking-wider"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            FINANCE × TECHNOLOGY
+          </span>
         </div>
+
+        {/* Column Headers */}
+        <div className="grid grid-cols-2 px-6 py-4 bg-[rgba(45,125,255,0.06)]">
+          <span className="text-[#00c8ff] text-xs font-semibold uppercase tracking-widest">
+            Finance
+          </span>
+
+          <span className="text-[#2d7dff] text-xs font-semibold uppercase tracking-widest">
+            Technology
+          </span>
+        </div>
+
+        {/* Finance & Tech Entries */}
+        <div className="px-6">
+          {entries.map(([finance, code], i) => (
+            <div
+              key={finance}
+              className="grid grid-cols-2 gap-3 py-4 border-b border-[rgba(45,125,255,0.12)]"
+              style={{
+                "--i": i,
+                transform: "translateZ(10px)",
+              } as CSSProperties}
+            >
+              <span className="text-[#aab8ce] text-xs">
+                {finance}
+              </span>
+
+              <span className="text-[#7aabff] text-xs">
+                {code}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between px-6 py-5 bg-[rgba(45,125,255,0.05)]">
+          <span className="text-[#7a8ba8] text-xs">
+            Where business meets innovation
+          </span>
+
+          <span className="text-[#00c8ff] text-xs font-semibold">
+            ✓ Balanced
+          </span>
+        </div>
+      </div>
+
+      {/* Floating Stamp */}
+      <div
+        className="absolute -right-5 -top-5 px-4 py-2 rounded-lg border border-[#00c8ff]/40 bg-[#0e2235] shadow-lg"
+        style={{ transform: "translateZ(45px)" }}
+      >
+        <span
+          className="text-[#00c8ff] text-xs font-bold tracking-widest"
+          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+        >
+          BALANCED
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
 
       <style>{`

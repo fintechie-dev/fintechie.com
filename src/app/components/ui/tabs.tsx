@@ -1,4 +1,3 @@
-import React from "react";
 "use client";
 
 import * as React from "react";
@@ -9,7 +8,7 @@ import { cn } from "./utils";
 function Tabs({
   className,
   ...props
-}: React.ComponentProps<TabsPrimitive.Root>) {
+}: React.ComponentProps<typeof TabsPrimitive.Root>) {
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
@@ -22,7 +21,7 @@ function Tabs({
 function TabsList({
   className,
   ...props
-}: React.ComponentProps<TabsPrimitive.List>) {
+}: React.ComponentProps<typeof TabsPrimitive.List>) {
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
@@ -38,7 +37,7 @@ function TabsList({
 function TabsTrigger({
   className,
   ...props
-}: React.ComponentProps<TabsPrimitive.Trigger>) {
+}: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
   return (
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
@@ -54,7 +53,7 @@ function TabsTrigger({
 function TabsContent({
   className,
   ...props
-}: React.ComponentProps<TabsPrimitive.Content>) {
+}: React.ComponentProps<typeof TabsPrimitive.Content>) {
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"

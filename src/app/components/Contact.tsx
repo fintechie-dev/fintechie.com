@@ -1,38 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Send, MapPin, Phone, Mail } from "lucide-react";
-
-import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      await emailjs.send(
-        "service_3hgmpsl",
-        "template_ph7h8bj",
-        {
-          name: form.name,
-          email: form.email,
-          company: form.company,
-          message: form.message,
-        },
-        "ZrGVolBLO3XDcJKjw"
-      );
-
-      setSent(true);
-      setForm({
-        name: "",
-        email: "",
-        company: "",
-        message: "",
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    setSent(true);
   };
 
   return (
@@ -153,7 +128,7 @@ export function Contact() {
                   <input
                     type={type}
                     placeholder={placeholder}
-                    value={form[key]}
+                    value={form[key as keyof typeof form]}
                     onChange={(e) => setForm({ ...form, [key]: e.target.value })}
                     className="w-full bg-[#080c14] border border-[rgba(45,125,255,0.2)] rounded-xl px-4 py-3 text-[#e8edf5] placeholder-[#4a5a70] focus:border-[#2d7dff] focus:outline-none transition-colors"
                     style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem" }}
