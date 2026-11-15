@@ -1,7 +1,7 @@
 
 import type { CSSProperties } from "react";
 import { ArrowRight, Cpu } from "lucide-react";
-import { useTilt } from "../hooks/UseTilt";
+import { useTilt } from "../hooks/useTilt";
 
 export function Hero() {
 
